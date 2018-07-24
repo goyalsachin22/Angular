@@ -70,7 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\employee\employee.component.css" />
     <Content Include="src\app\employee\employee.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
