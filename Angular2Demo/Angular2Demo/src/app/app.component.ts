@@ -15,6 +15,9 @@ import { Interpolation, PropertyBindingType } from "../../node_modules/@angular/
                         <span [innerHtml]='firstName'></span>
                         <span bind-innerHtml='firstName'></span>
                         <div [innerHtml]='badHtml'></div>
+                        <div>
+                           <input id='inputId' type='text' value='Tom'>
+                        </div>
                   </div>`
 })
 export class AppComponent {
@@ -63,4 +66,18 @@ export class AppComponent {
  * Remember to enclose the property name with a pair of square brackets
  * Canonical form <button bind-disabled='isDisabled'>Click Me</button>
  * Angular data binding sanitizes malicious content before displaying it
- 
+ */
+
+
+/*HTML Element Attribute vs Dom Property
+ * attributes are defined by HTML, where as properties are defined by the DOM
+ * Attributes initilize DOM Properties, once the initialization complete, the attribute job is done
+ * property value can change, where as attribute value can't change
+ * 
+ *Important Points
+ * HTML attributes and the DOM properties are different things
+ * Angular binding works with properties and events, and not attributes
+ * <button [disabled]='isDisabled'>Click Me</button>
+ * disabled is DOM Property, and not attribute
+ * <button disabled='{{isDisabled}}'>Click Me</button>
+ */

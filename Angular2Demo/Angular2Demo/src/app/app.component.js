@@ -25,7 +25,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                  </div>"
+            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                  </div>"
         })
     ], AppComponent);
     return AppComponent;
@@ -55,6 +55,17 @@ exports.AppComponent = AppComponent;
  * Remember to enclose the property name with a pair of square brackets
  * Canonical form <button bind-disabled='isDisabled'>Click Me</button>
  * Angular data binding sanitizes malicious content before displaying it
- 
- 
+ */
+/*HTML Element Attribute vs Dom Property
+ * attributes are defined by HTML, where as properties are defined by the DOM
+ * Attributes initilize DOM Properties, once the initialization complete, the attribute job is done
+ * property value can change, where as attribute value can't change
+ *
+ *Important Points
+ * HTML attributes and the DOM properties are different things
+ * Angular binding works with properties and events, and not attributes
+ * <button [disabled]='isDisabled'>Click Me</button>
+ * disabled is DOM Property, and not attribute
+ * <button disabled='{{isDisabled}}'>Click Me</button>
+ */ 
 //# sourceMappingURL=app.component.js.map
