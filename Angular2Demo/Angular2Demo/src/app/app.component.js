@@ -9,15 +9,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.pageHeader = "Employee Details";
+        this.pageHeader = null;
+        this.ImageSource = "https://www.w3schools.com/angular/pic_angular.jpg";
+        this.firstName = "Sachin";
+        this.lastName = "Goyal";
     }
+    //Method declaration syntex
+    AppComponent.prototype.getFullName = function () {
+        return this.firstName + " " + this.lastName;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div>\n                    <h1>\n                       {{pageHeader}}\n                    </h1>\n                        <my-employee></my-employee>\n                  </div>"
+            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                  </div>"
         })
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+//Angular interpolation
+//DataBinding  Description
+//one way data-binding(From component to Viewtemplate)
+//one way data-binding(From Viewtemplate to component)
+//Two way data - binding(From component to Viewtemplate & From View template to Component)
+//Interpolation examples
+//    < h1 > {{firstName}} </h1>
+//   <h1> {{'Name= ' + firstName}} </h1>
+//    <h1> {{ 10 + 20 + 30 }} </h1>
+//    <h1> {{ firstName ? firstname : "No name specified"}} </h1>
+//    <img src='{{imagePath}}'/>
+//    <h1>{{'Full Name = ' + getFullName()}} </h1>
 //# sourceMappingURL=app.component.js.map
