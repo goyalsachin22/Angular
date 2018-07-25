@@ -11,8 +11,12 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.pageHeader = null;
         this.ImageSource = "https://www.w3schools.com/angular/pic_angular.jpg";
+        this.ImageSource2 = "https://pbs.twimg.com/profile_images/590149318071353345/4EqHKAGD_400x400.png";
+        this.ImageSource3 = '4EqHKAGD_400x400.png';
         this.firstName = "Sachin";
         this.lastName = "Goyal";
+        this.isDisabled = true;
+        this.badHtml = 'Hello <script>alert("Hacked");</script> World';
     }
     //Method declaration syntex
     AppComponent.prototype.getFullName = function () {
@@ -21,7 +25,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                  </div>"
+            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                  </div>"
         })
     ], AppComponent);
     return AppComponent;
@@ -39,4 +43,18 @@ exports.AppComponent = AppComponent;
 //    <h1> {{ firstName ? firstname : "No name specified"}} </h1>
 //    <img src='{{imagePath}}'/>
 //    <h1>{{'Full Name = ' + getFullName()}} </h1>
+// Interpolation <img src='{{imagepath}}' />       Property Binding <img [src]='imagePath'/>
+/*Interpolation vs PropertyBinding
+ * Interpolation is a special syntex that Angular converts into a property binding
+ * To concatenate strings we must use interpolation insted of property binding
+ * e.g. <img src='http://someimagepath.com/{{imagepath}}'/>
+ * To set an element property to a non-string data type, you must use property binding
+ * <button [disabled]='isDisabled'>Click Me</button>
+ *
+ * Property Binding
+ * Remember to enclose the property name with a pair of square brackets
+ * Canonical form <button bind-disabled='isDisabled'>Click Me</button>
+ * Angular data binding sanitizes malicious content before displaying it
+ 
+ 
 //# sourceMappingURL=app.component.js.map

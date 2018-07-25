@@ -1,19 +1,31 @@
 import { Component } from "@angular/core"
+import { fail } from "assert";
+import { Interpolation, PropertyBindingType } from "../../node_modules/@angular/compiler";
 
 @Component({
     selector: 'my-app',
     template: `<div>
                     <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>
-                        <img src='{{ImageSource}}'/>
+                        <img src='{{ImageSource}}'/>  
+                        <img [src]='ImageSource2'/>
+                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>
                         <my-employee></my-employee>
                         {{'Full Name: '+ getFullName()}}
+                        <button [disabled]='isDisabled'>Click Me </button>
+                        <span [innerHtml]='firstName'></span>
+                        <span bind-innerHtml='firstName'></span>
+                        <div [innerHtml]='badHtml'></div>
                   </div>`
 })
 export class AppComponent {
     pageHeader: string = null;
     ImageSource: string = "https://www.w3schools.com/angular/pic_angular.jpg";
+    ImageSource2: string = "https://pbs.twimg.com/profile_images/590149318071353345/4EqHKAGD_400x400.png";
+    ImageSource3: string = '4EqHKAGD_400x400.png';
     firstName: string = "Sachin";
     lastName: string = "Goyal";
+    isDisabled: boolean = true;
+    badHtml: string = 'Hello <script>alert("Hacked");</script> World';
 
     //Method declaration syntex
     getFullName(): string {
@@ -36,3 +48,19 @@ export class AppComponent {
 //    <h1> {{ firstName ? firstname : "No name specified"}} </h1>
 //    <img src='{{imagePath}}'/>
 //    <h1>{{'Full Name = ' + getFullName()}} </h1>
+
+
+// Interpolation <img src='{{imagepath}}' />       Property Binding <img [src]='imagePath'/>
+
+/*Interpolation vs PropertyBinding
+ * Interpolation is a special syntex that Angular converts into a property binding
+ * To concatenate strings we must use interpolation insted of property binding
+ * e.g. <img src='http://someimagepath.com/{{imagepath}}'/>
+ * To set an element property to a non-string data type, you must use property binding
+ * <button [disabled]='isDisabled'>Click Me</button>
+ * 
+ * Property Binding
+ * Remember to enclose the property name with a pair of square brackets
+ * Canonical form <button bind-disabled='isDisabled'>Click Me</button>
+ * Angular data binding sanitizes malicious content before displaying it
+ 
