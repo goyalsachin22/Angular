@@ -1,10 +1,17 @@
 import { Component } from "@angular/core"
 import { fail } from "assert";
 import { Interpolation, PropertyBindingType } from "../../node_modules/@angular/compiler";
+import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
 
 @Component({
     selector: 'my-app',
-    template: `<div>
+    template: `
+                    <button style='color:red' [style.fontWeight]="isBold?'bold':'normal'">My Button</button>
+                    <br/><br/>
+                    <button [style.font-size.px]="fontSize">My Button</button>
+                     <br/><br/>
+                    <button [ngStyle]="getStyle()">My Button</button>
+                    <div>
                     <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>
                         <img src='{{ImageSource}}'/>  
                         <img [src]='ImageSource2'/>
@@ -33,6 +40,19 @@ export class AppComponent {
     //Method declaration syntex
     getFullName(): string {
         return this.firstName + " " + this.lastName;
+    }
+
+    isBold: boolean = true;
+    fontSize: number = 30;
+    isItalic: boolean = true;
+
+    getStyle() {
+        let style = {
+            'font-size.px': this.fontSize,
+            'font-weight': this.isBold ? 'Bold' : 'normal',
+            'font-style': this.isItalic ? 'italic':'normal',
+        }
+        return style;
     }
 }
 

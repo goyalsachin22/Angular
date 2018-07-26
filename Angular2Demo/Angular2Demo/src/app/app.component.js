@@ -17,15 +17,26 @@ var AppComponent = /** @class */ (function () {
         this.lastName = "Goyal";
         this.isDisabled = true;
         this.badHtml = 'Hello <script>alert("Hacked");</script> World';
+        this.isBold = true;
+        this.fontSize = 30;
+        this.isItalic = true;
     }
     //Method declaration syntex
     AppComponent.prototype.getFullName = function () {
         return this.firstName + " " + this.lastName;
     };
+    AppComponent.prototype.getStyle = function () {
+        var style = {
+            'font-size.px': this.fontSize,
+            'font-weight': this.isBold ? 'Bold' : 'normal',
+            'font-style': this.isItalic ? 'italic' : 'normal',
+        };
+        return style;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                  </div>"
+            template: "\n                    <button style='color:red' [style.fontWeight]=\"isBold?'bold':'normal'\">My Button</button>\n                    <br/><br/>\n                    <button [style.font-size.px]=\"fontSize\">My Button</button>\n                     <br/><br/>\n                    <button [ngStyle]=\"getStyle()\">My Button</button>\n                    <div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                  </div>"
         })
     ], AppComponent);
     return AppComponent;
