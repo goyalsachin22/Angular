@@ -5,7 +5,9 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
 
 @Component({
     selector: 'my-app',
-    template: ` Name: <input [value]='name' (input)='name=$event.target.value'/>
+    template:   `<list-employee></list-employee>
+                <br/>
+                Name: <input [value]='name' (input)='name=$event.target.value'/>
                 <br/>
                 Short Syntext for two way data binding: Name: <input [(ngModel)]='name'/>
                 <br/>

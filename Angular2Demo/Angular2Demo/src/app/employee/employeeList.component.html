@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Annual Salary</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.code}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender }}</td>
+                <td>{{employee.annualSalary }}</td>
+                <td>{{employee.DOB }}</td>
+            </tr>
+            <tr *ngIf="!employees || employees.length==0">
+                <td colspan="5">No Employees to display</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
