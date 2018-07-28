@@ -13,15 +13,15 @@ var core_1 = require("@angular/core");
 var EmployeeListComponent = /** @class */ (function () {
     function EmployeeListComponent() {
         this.employees = [
-            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '22/04/1988' },
-            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '24/04/1991' }
+            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
+            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '04/24/1991' }
         ];
     }
     EmployeeListComponent.prototype.getEmployees = function () {
         this.employees = [
-            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '22/04/1988' },
-            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '24/04/1991' },
-            { code: 'emp103', name: 'Prateek Jaitwal', gender: 'Male', annualSalary: 10000, DOB: '31/01/1988' }
+            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
+            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '04/24/1991' },
+            { code: 'emp103', name: 'Prateek Jaitwal', gender: 'Male', annualSalary: 10000, DOB: '01/31/1988' }
         ];
     };
     EmployeeListComponent.prototype.trackByEmpCode = function (index, employee) {
