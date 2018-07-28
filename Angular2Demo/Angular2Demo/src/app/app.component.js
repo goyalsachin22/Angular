@@ -17,6 +17,7 @@ var AppComponent = /** @class */ (function () {
         this.lastName = "Goyal";
         this.isDisabled = true;
         this.badHtml = 'Hello <script>alert("Hacked");</script> World';
+        this.name = 'Sachin';
         this.isBold = true;
         this.fontSize = 30;
         this.isItalic = true;
@@ -39,7 +40,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: " <my-employee></my-employee>\n                    <button style='color:red' [style.fontWeight]=\"isBold?'bold':'normal'\">My Button</button>\n                    <br/><br/>\n                    <button [style.font-size.px]=\"fontSize\">My Button</button>\n                     <br/><br/>\n                    <button [ngStyle]=\"getStyle()\">My Button</button>\n                    <div>\n                    <button (click)='onClick()'>Click Me</button>\n                    <button on-click='onClick()'>Canonical form of event binding</button>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                      \n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                  </div>"
+            template: " Name: <input [value]='name' (input)='name=$event.target.value'/>\n                <br/>\n                Short Syntext for two way data binding: Name: <input [(ngModel)]='name'/>\n                <br/>\n                You Entered: {{name}}\n                <my-employee></my-employee>\n                    <button style='color:red' [style.fontWeight]=\"isBold?'bold':'normal'\">My Button</button>\n                    <br/><br/>\n                    <button [style.font-size.px]=\"fontSize\">My Button</button>\n                     <br/><br/>\n                    <button [ngStyle]=\"getStyle()\">My Button</button>\n                    <div>\n                    <button (click)='onClick()'>Click Me</button>\n                    <button on-click='onClick()'>Canonical form of event binding</button>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                      \n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                  </div>\n               "
         })
     ], AppComponent);
     return AppComponent;
@@ -81,5 +82,9 @@ exports.AppComponent = AppComponent;
  * <button [disabled]='isDisabled'>Click Me</button>
  * disabled is DOM Property, and not attribute
  * <button disabled='{{isDisabled}}'>Click Me</button>
- */ 
+ */
+/* Two way dataBinding
+ * Name: <input [value]='name' (input)='name=$event.target.value'/>
+   Name: <input [(ngModel)]='name'/> (Need change in app.module.ts)
+*/ 
 //# sourceMappingURL=app.component.js.map

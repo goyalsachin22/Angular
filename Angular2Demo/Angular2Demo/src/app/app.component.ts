@@ -5,7 +5,12 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
 
 @Component({
     selector: 'my-app',
-    template: ` <my-employee></my-employee>
+    template: ` Name: <input [value]='name' (input)='name=$event.target.value'/>
+                <br/>
+                Short Syntext for two way data binding: Name: <input [(ngModel)]='name'/>
+                <br/>
+                You Entered: {{name}}
+                <my-employee></my-employee>
                     <button style='color:red' [style.fontWeight]="isBold?'bold':'normal'">My Button</button>
                     <br/><br/>
                     <button [style.font-size.px]="fontSize">My Button</button>
@@ -27,7 +32,8 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
                         <img src='{{ImageSource}}'/>  
                         <img [src]='ImageSource2'/>
                         <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>
-                  </div>`
+                  </div>
+               `
 })
 export class AppComponent {
     pageHeader: string = null;
@@ -38,7 +44,7 @@ export class AppComponent {
     lastName: string = "Goyal";
     isDisabled: boolean = true;
     badHtml: string = 'Hello <script>alert("Hacked");</script> World';
-
+    name: string ='Sachin';
     //Method declaration syntex
     getFullName(): string {
         return this.firstName + " " + this.lastName;
@@ -107,3 +113,8 @@ export class AppComponent {
  * disabled is DOM Property, and not attribute
  * <button disabled='{{isDisabled}}'>Click Me</button>
  */
+
+/* Two way dataBinding
+ * Name: <input [value]='name' (input)='name=$event.target.value'/>
+   Name: <input [(ngModel)]='name'/> (Need change in app.module.ts)
+*/
