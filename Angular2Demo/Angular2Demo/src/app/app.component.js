@@ -33,10 +33,13 @@ var AppComponent = /** @class */ (function () {
         };
         return style;
     };
+    AppComponent.prototype.onClick = function () {
+        console.log('Button Clicked');
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n                    <button style='color:red' [style.fontWeight]=\"isBold?'bold':'normal'\">My Button</button>\n                    <br/><br/>\n                    <button [style.font-size.px]=\"fontSize\">My Button</button>\n                     <br/><br/>\n                    <button [ngStyle]=\"getStyle()\">My Button</button>\n                    <div>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                        <my-employee></my-employee>\n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                  </div>"
+            template: " <my-employee></my-employee>\n                    <button style='color:red' [style.fontWeight]=\"isBold?'bold':'normal'\">My Button</button>\n                    <br/><br/>\n                    <button [style.font-size.px]=\"fontSize\">My Button</button>\n                     <br/><br/>\n                    <button [ngStyle]=\"getStyle()\">My Button</button>\n                    <div>\n                    <button (click)='onClick()'>Click Me</button>\n                    <button on-click='onClick()'>Canonical form of event binding</button>\n                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>\n                      \n                        {{'Full Name: '+ getFullName()}}\n                        <button [disabled]='isDisabled'>Click Me </button>\n                        <span [innerHtml]='firstName'></span>\n                        <span bind-innerHtml='firstName'></span>\n                        <div [innerHtml]='badHtml'></div>\n                        <div>\n                           <input id='inputId' type='text' value='Tom'>\n                        </div>\n                        <img src='{{ImageSource}}'/>  \n                        <img [src]='ImageSource2'/>\n                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>\n                  </div>"
         })
     ], AppComponent);
     return AppComponent;

@@ -14,7 +14,11 @@ var EmployeeComponent = /** @class */ (function () {
         this.gender = "Male";
         this.age = 20;
         this.columnSpan = 2;
+        this.showDetails = false;
     }
+    EmployeeComponent.prototype.toggleDetails = function () {
+        this.showDetails = !this.showDetails;
+    };
     EmployeeComponent = __decorate([
         core_1.Component({
             selector: 'my-employee',

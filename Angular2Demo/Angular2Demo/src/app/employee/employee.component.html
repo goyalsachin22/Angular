@@ -27,17 +27,23 @@
             <td>{{lastName}}</td>
         </tr>
 
-        <tr>
+        <tr *ngIf='showDetails'>
             <td>Gender</td>
             <td>{{gender}}</td>
         </tr>
 
-        <tr>
+        <tr *ngIf='showDetails'>
             <td>Age</td>
             <td>{{age}}</td>
         </tr>
     </tbody>
 </table>
+<br />
+<button (click)="toggleDetails()">
+    {{showDetails? 'Hide': 'Show'}} Details
+</button>
+
+
 
 
 <!--what is attribute Binding
@@ -45,7 +51,7 @@
     element properties and Not attributes
   2. But not all HTML element attributes have corresponding properties. e.g. colSpan attribute
     does not have a corresponding property
-  3. In situation like this we want to be able to bind to HTML element attributes 
+  3. In situation like this we want to be able to bind to HTML element attributes
   4. Hence, Angular provided Attribute Binding
     syntex:
     <th [attr.colspan]='columnSpan'>
