@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var employee_service_1 = require("./employee.service");
 var EmployeeListComponent = /** @class */ (function () {
-    function EmployeeListComponent() {
+    function EmployeeListComponent(_employeeService) {
         this.selectedEmployeeCountRadioButton = 'All';
-        this.employees = [
-            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
-            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '04/24/1991' }
-        ];
+        this._employeeService = _employeeService;
     }
+    EmployeeListComponent.prototype.ngOnInit = function () {
+        //ngOnInit run after the constructor
+        // Best place for components initialization, service calls & fetch data from remoteServer
+        this.employees = this._employeeService.getEmployees();
+    };
     EmployeeListComponent.prototype.getEmployees = function () {
         this.employees = [
             { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
@@ -46,9 +49,10 @@ var EmployeeListComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'list-employee',
             templateUrl: 'app/employee/employeeList.component.html',
-            styleUrls: ['app/employee/employeeList.component.css']
+            styleUrls: ['app/employee/employeeList.component.css'],
+            providers: [employee_service_1.EmployeeService]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [employee_service_1.EmployeeService])
     ], EmployeeListComponent);
     return EmployeeListComponent;
 }());

@@ -1,19 +1,29 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component , OnInit } from '@angular/core';
 import { IEmployee } from './Employee'
+import { EmployeeService} from './employee.service'
+import { EmployeeTitlePipe } from './employeeTitle.pipe';
 
 @Component({
     selector: 'list-employee',
     templateUrl: 'app/employee/employeeList.component.html',
-    styleUrls: ['app/employee/employeeList.component.css']
+    styleUrls: ['app/employee/employeeList.component.css'],
+    providers: [EmployeeService]
 })
-export class EmployeeListComponent {
-    employees: IEmployee[];
+export class EmployeeListComponent implements OnInit {
 
-    constructor() {
-        this.employees = [
-            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
-            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '04/24/1991' }
-        ];
+   
+    employees: IEmployee[];
+    private _employeeService: EmployeeService;
+
+    constructor(_employeeService: EmployeeService) {
+        this._employeeService = _employeeService;
+       
+    }
+
+    ngOnInit(): void {
+      //ngOnInit run after the constructor
+      // Best place for components initialization, service calls & fetch data from remoteServer
+        this.employees = this._employeeService.getEmployees();
     }
 
     getEmployees(): void {

@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <TypeScriptCompile Include="src\app\employee\employee.service.ts" />
     <TypeScriptCompile Include="src\app\employee\Employee.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeCount.component.ts" />
     <Content Include="src\app\employee\employeeList.component.css" />
