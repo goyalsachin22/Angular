@@ -5,7 +5,11 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
 
 @Component({
     selector: 'my-app',
-    template:   `<list-employee></list-employee>
+    template:   `Your Text: <input type='text' [(ngModel)]='userText'/>
+                <br/>
+                <br/>
+                <simple [simpleInput]='userText'></simple>
+                <list-employee></list-employee>
                 <br/>
                 Name: <input [value]='name' (input)='name=$event.target.value'/>
                 <br/>
@@ -55,7 +59,7 @@ export class AppComponent {
     isBold: boolean = true;
     fontSize: number = 30;
     isItalic: boolean = true;
-
+    userText: string = 'Pragim';
     getStyle() {
         let style = {
             'font-size.px': this.fontSize,
