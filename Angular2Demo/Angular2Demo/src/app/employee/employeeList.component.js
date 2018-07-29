@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var employee_service_1 = require("./employee.service");
 var EmployeeListComponent = /** @class */ (function () {
     function EmployeeListComponent(_employeeService) {
+        this.statusMessage = 'Loading employees data ...';
         this.selectedEmployeeCountRadioButton = 'All';
         this._employeeService = _employeeService;
     }
@@ -21,7 +22,10 @@ var EmployeeListComponent = /** @class */ (function () {
         //ngOnInit run after the constructor
         // Best place for components initialization, service calls & fetch data from remoteServer
         this._employeeService.getEmployees()
-            .subscribe(function (employeeData) { return _this.employees = employeeData; });
+            .subscribe(function (employeeData) { return _this.employees = employeeData; }, function (error) {
+            _this.statusMessage = 'Problem with the service. Please try again after some time.';
+            console.error(error);
+        });
     };
     EmployeeListComponent.prototype.getEmployees = function () {
         this.employees = [

@@ -2,6 +2,7 @@
 import { IEmployee } from './Employee'
 import { EmployeeService} from './employee.service'
 import { EmployeeTitlePipe } from './employeeTitle.pipe';
+import { error } from 'util';
 
 @Component({
     selector: 'list-employee',
@@ -14,6 +15,7 @@ export class EmployeeListComponent implements OnInit {
    
     employees: IEmployee[];
     private _employeeService: EmployeeService;
+    statusMessage: string = 'Loading employees data ...';
 
     constructor(_employeeService: EmployeeService) {
         this._employeeService = _employeeService;
@@ -24,7 +26,10 @@ export class EmployeeListComponent implements OnInit {
       //ngOnInit run after the constructor
       // Best place for components initialization, service calls & fetch data from remoteServer
         this._employeeService.getEmployees()
-            .subscribe((employeeData) => this.employees = employeeData);
+            .subscribe((employeeData) => this.employees = employeeData, (error) => {
+                this.statusMessage = 'Problem with the service. Please try again after some time.';
+                console.error(error);
+            });
     }
 
     getEmployees(): void {

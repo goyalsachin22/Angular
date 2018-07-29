@@ -48,7 +48,7 @@
             </ng-container>
             <tr *ngIf="!employees">
                 <td colspan="5">
-                    Loading employees data ...
+                    {{statusMessage}}
                 </td>
             </tr>
             <tr *ngIf="employees && employees.length==0">
