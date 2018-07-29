@@ -1,13 +1,17 @@
 ﻿import { Injectable } from '@angular/core'
 import { IEmployee } from './Employee';
+import { Http , Response } from '@angular/http'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/map'
 
 @Injectable()
-
 export class EmployeeService {
-    getEmployees(): IEmployee[] {
-        return [
-            { code: 'emp101', name: 'Sachin', gender: 'Male', annualSalary: 5500, DOB: '04/22/1988' },
-            { code: 'emp102', name: 'Krati Jaitwal', gender: 'Female', annualSalary: 7500, DOB: '04/24/1991' }
-        ];
+
+    constructor(private _http: Http) {
+
+    }
+    getEmployees(): Observable<IEmployee[]> {
+        return this._http.get("http://localhost:59712/api/Employee")
+                        .map((response: Response)=> <IEmployee[]> response.json())
     }
 }

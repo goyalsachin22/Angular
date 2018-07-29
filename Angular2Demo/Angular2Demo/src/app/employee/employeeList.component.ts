@@ -23,7 +23,8 @@ export class EmployeeListComponent implements OnInit {
     ngOnInit(): void {
       //ngOnInit run after the constructor
       // Best place for components initialization, service calls & fetch data from remoteServer
-        this.employees = this._employeeService.getEmployees();
+        this._employeeService.getEmployees()
+            .subscribe((employeeData) => this.employees = employeeData);
     }
 
     getEmployees(): void {

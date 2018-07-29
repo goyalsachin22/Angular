@@ -17,9 +17,11 @@ var EmployeeListComponent = /** @class */ (function () {
         this._employeeService = _employeeService;
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //ngOnInit run after the constructor
         // Best place for components initialization, service calls & fetch data from remoteServer
-        this.employees = this._employeeService.getEmployees();
+        this._employeeService.getEmployees()
+            .subscribe(function (employeeData) { return _this.employees = employeeData; });
     };
     EmployeeListComponent.prototype.getEmployees = function () {
         this.employees = [
