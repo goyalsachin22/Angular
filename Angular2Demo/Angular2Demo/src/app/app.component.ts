@@ -5,7 +5,13 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
 
 @Component({
     selector: 'my-app',
-    template:   `Your Text: <input type='text' [(ngModel)]='userText'/>
+    template:   `
+                    <ul class="nav nav-tabs">
+                        <li routerLinkActive="active"> <a  routerLink="home">Home</a> </li>
+                        <li routerLinkActive="active"> <a routerLink="employees">Employee</a> </li>
+                    </ul>
+                    <router-outlet></router-outlet>
+                Your Text: <input type='text' [(ngModel)]='userText'/>
                 <br/>
                 <br/>
                 <simple [simpleInput]='userText'></simple>
