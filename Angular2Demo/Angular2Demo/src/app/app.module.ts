@@ -14,12 +14,14 @@ import { SimpleComponent } from './Other/simple.component'
 import { HomeComponent } from './home/home.component'
 import { PageNotFoundComponent } from './Other/pageNotFound.component'
 import { componentFactoryName } from '../../node_modules/@angular/compiler';
+import { EmployeeService } from "./employee/employee.service"
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'employees', component: EmployeeListComponent },
+    { path: 'employees/:code', component: EmployeeComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '**' , component: PageNotFoundComponent }
+    { path: '**', component: PageNotFoundComponent }
 
 ];
 
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
         SimpleComponent,
         HomeComponent,
         PageNotFoundComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [EmployeeService]
 })
 export class AppModule { }

@@ -1,4 +1,7 @@
-﻿import { Component } from '@angular/core'
+﻿import { Component, OnInit } from '@angular/core'
+import { IEmployee } from './Employee'
+import { ActivatedRoute } from '@angular/router'
+import { EmployeeService } from './employee.service'
 
 @Component({
     selector: 'my-employee',
@@ -6,16 +9,31 @@
     styleUrls: ['app/employee/employee.component.css']
 })
 export class EmployeeComponent {
-    firstName: string = "Sachin";
-    lastName: string = "Goyal";
-    gender: string = "Male";
-    age: number = 20;
-    columnSpan: number = 2;
-    showDetails: boolean = false;
+    employee: IEmployee;
+    statusMessage: string = "Loading data please wait";
+    constructor(private _activatedRoute: ActivatedRoute, private _employeeService: EmployeeService) {
 
-    toggleDetails(): void {
-        this.showDetails = !this.showDetails;
     }
+
+    ngOnInit() {
+        let empCode: string = this._activatedRoute.snapshot.params['code'];
+        this._employeeService.getEmployeeByCode(empCode).subscribe(
+            (employeeData) => {
+                if (employeeData == null) {
+                    this.statusMessage = "No employee with this id";
+                } else {
+                    this.employee = employeeData;
+                }
+            },
+            (error) => {
+                this.statusMessage = "Error reaching out service, please try again after some time";
+                console.log(error);
+
+            }
+        )
+    }
+
+
 }
 
 

@@ -11,40 +11,6 @@ import { transition } from "../../node_modules/@angular/core/src/animation/dsl";
                         <li routerLinkActive="active"> <a routerLink="employees">Employee</a> </li>
                     </ul>
                     <router-outlet></router-outlet>
-                Your Text: <input type='text' [(ngModel)]='userText'/>
-                <br/>
-                <br/>
-                <simple [simpleInput]='userText'></simple>
-                <list-employee></list-employee>
-                <br/>
-                Name: <input [value]='name' (input)='name=$event.target.value'/>
-                <br/>
-                Short Syntext for two way data binding: Name: <input [(ngModel)]='name'/>
-                <br/>
-                You Entered: {{name}}
-                <my-employee></my-employee>
-                    <button style='color:red' [style.fontWeight]="isBold?'bold':'normal'">My Button</button>
-                    <br/><br/>
-                    <button [style.font-size.px]="fontSize">My Button</button>
-                     <br/><br/>
-                    <button [ngStyle]="getStyle()">My Button</button>
-                    <div>
-                    <button (click)='onClick()'>Click Me</button>
-                    <button on-click='onClick()'>Canonical form of event binding</button>
-                    <h1>{{pageHeader ?  pageHeader : 'No Header'}}</h1>
-                      
-                        {{'Full Name: '+ getFullName()}}
-                        <button [disabled]='isDisabled'>Click Me </button>
-                        <span [innerHtml]='firstName'></span>
-                        <span bind-innerHtml='firstName'></span>
-                        <div [innerHtml]='badHtml'></div>
-                        <div>
-                           <input id='inputId' type='text' value='Tom'>
-                        </div>
-                        <img src='{{ImageSource}}'/>  
-                        <img [src]='ImageSource2'/>
-                        <img src='https://pbs.twimg.com/profile_images/590149318071353345/{{ImageSource3}}'/>
-                  </div>
                `
 })
 export class AppComponent {

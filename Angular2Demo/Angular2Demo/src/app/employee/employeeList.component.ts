@@ -8,7 +8,7 @@ import { error } from 'util';
     selector: 'list-employee',
     templateUrl: 'app/employee/employeeList.component.html',
     styleUrls: ['app/employee/employeeList.component.css'],
-    providers: [EmployeeService]
+    //providers: [EmployeeService] (Moved this to module level so that every component can use service)
 })
 export class EmployeeListComponent implements OnInit {
 
