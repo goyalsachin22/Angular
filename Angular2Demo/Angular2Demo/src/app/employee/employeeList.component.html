@@ -62,5 +62,10 @@
     </table>
     <br />
     <button (click)="getEmployees()">Refresh Employees</button>
+
+    <div>
+        Color Preference:
+        <input type="text" [(ngModel)]="colour" [style.background]="colour"/>
+    </div>
 </body>
 </html>

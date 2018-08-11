@@ -1,6 +1,7 @@
 ﻿import { Component , OnInit } from '@angular/core';
 import { IEmployee } from './Employee'
-import { EmployeeService} from './employee.service'
+import { EmployeeService } from './employee.service'
+import { userPreferencesService} from  './userPreferences.service'
 import { EmployeeTitlePipe } from './employeeTitle.pipe';
 import { error } from 'util';
 
@@ -14,12 +15,11 @@ export class EmployeeListComponent implements OnInit {
 
    
     employees: IEmployee[];
-    private _employeeService: EmployeeService;
+
     statusMessage: string = 'Loading employees data ...';
 
-    constructor(_employeeService: EmployeeService) {
-        this._employeeService = _employeeService;
-       
+    constructor(private _employeeService: EmployeeService,
+                private _userPreferences: userPreferencesService) {
     }
 
     ngOnInit(): void {
@@ -59,5 +59,13 @@ export class EmployeeListComponent implements OnInit {
     selectedEmployeeCountRadioButton: string = 'All';
     onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
         this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
+    }
+
+    get colour(): string {
+        return this._userPreferences.colorPreferences;
+    }
+
+    set colour(value: string) {
+        this._userPreferences.colorPreferences = value;
     }
 }
