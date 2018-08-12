@@ -23,20 +23,19 @@ export class EmployeeComponent {
 
     ngOnInit() {
         let empCode: string = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode).subscribe(
+        this._employeeService.getEmployeeByCode(empCode).then(
             (employeeData) => {
                 if (employeeData == null) {
                     this.statusMessage = "No employee with this id";
                 } else {
                     this.employee = employeeData;
                 }
-            },
-            (error) => {
-                this.statusMessage = "Error reaching out service, please try again after some time";
-                console.log(error);
-
             }
-        )
+        ).catch((error) => {
+            this.statusMessage = "Error reaching out service, please try again after some time";
+            console.log(error);
+
+        });
     }
 
 

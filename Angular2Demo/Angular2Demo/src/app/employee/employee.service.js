@@ -15,6 +15,7 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
+require("rxjs/add/operator/toPromise");
 var EmployeeService = /** @class */ (function () {
     function EmployeeService(_http) {
         this._http = _http;
@@ -25,9 +26,14 @@ var EmployeeService = /** @class */ (function () {
             .catch(this.handleError);
     };
     EmployeeService.prototype.getEmployeeByCode = function (empcode) {
-        return this._http.get("http://localhost:59712/api/Employee/" + empcode)
+        return this._http.get("http://localhost:59712/api/Employees/" + empcode)
             .map(function (response) { return response.json(); })
-            .catch(this.handleError);
+            .toPromise()
+            .catch(this.handlePromiseError);
+    };
+    EmployeeService.prototype.handlePromiseError = function (error) {
+        console.error(error);
+        throw (error);
     };
     EmployeeService.prototype.handleError = function (error) {
         console.log(error);

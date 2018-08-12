@@ -25,14 +25,14 @@ var EmployeeComponent = /** @class */ (function () {
     EmployeeComponent.prototype.ngOnInit = function () {
         var _this = this;
         var empCode = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode).subscribe(function (employeeData) {
+        this._employeeService.getEmployeeByCode(empCode).then(function (employeeData) {
             if (employeeData == null) {
                 _this.statusMessage = "No employee with this id";
             }
             else {
                 _this.employee = employeeData;
             }
-        }, function (error) {
+        }).catch(function (error) {
             _this.statusMessage = "Error reaching out service, please try again after some time";
             console.log(error);
         });
