@@ -245,6 +245,7 @@
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\Other\pageNotFound.component.ts" />
     <TypeScriptCompile Include="src\app\Other\simple.component.ts" />
+    <TypeScriptCompile Include="src\app\temp.module.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>

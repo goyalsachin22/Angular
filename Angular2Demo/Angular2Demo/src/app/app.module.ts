@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http'
 import { RouterModule, Routes } from '@angular/router'
+import { TestModule } from './temp.module'
 
 
 import { AppComponent } from './app.component';
@@ -27,7 +28,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes)],
+    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes), TestModule],
     declarations: [AppComponent,
         EmployeeComponent,
         EmployeeListComponent,
@@ -37,6 +38,6 @@ const appRoutes: Routes = [
         HomeComponent,
         PageNotFoundComponent],
     bootstrap: [AppComponent],
-    providers: [EmployeeService, userPreferencesService]
+    providers: [EmployeeService]
 })
 export class AppModule { }
