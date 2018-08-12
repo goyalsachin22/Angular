@@ -13,11 +13,15 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var employee_service_1 = require("./employee.service");
 var EmployeeComponent = /** @class */ (function () {
-    function EmployeeComponent(_activatedRoute, _employeeService) {
+    function EmployeeComponent(_activatedRoute, _employeeService, _router) {
         this._activatedRoute = _activatedRoute;
         this._employeeService = _employeeService;
+        this._router = _router;
         this.statusMessage = "Loading data please wait";
     }
+    EmployeeComponent.prototype.onBackButtonClick = function () {
+        this._router.navigate(['/employees']);
+    };
     EmployeeComponent.prototype.ngOnInit = function () {
         var _this = this;
         var empCode = this._activatedRoute.snapshot.params['code'];
@@ -39,7 +43,9 @@ var EmployeeComponent = /** @class */ (function () {
             templateUrl: 'app/employee/employee.component.html',
             styleUrls: ['app/employee/employee.component.css']
         }),
-        __metadata("design:paramtypes", [router_1.ActivatedRoute, employee_service_1.EmployeeService])
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            employee_service_1.EmployeeService,
+            router_1.Router])
     ], EmployeeComponent);
     return EmployeeComponent;
 }());
