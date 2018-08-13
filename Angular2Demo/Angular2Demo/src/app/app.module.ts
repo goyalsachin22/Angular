@@ -17,10 +17,12 @@ import { PageNotFoundComponent } from './Other/pageNotFound.component'
 import { componentFactoryName } from '../../node_modules/@angular/compiler';
 import { EmployeeService } from "./employee/employee.service"
 import { userPreferencesService } from './employee/userPreferences.service'
+import { BootstrapComponent } from './bootstrap/Bootstrap.componenet';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'employees', component: EmployeeListComponent },
+    { path: 'bootstrap', component: BootstrapComponent },
     { path: 'employees/:code', component: EmployeeComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
         EmployeeCountComponent,
         SimpleComponent,
         HomeComponent,
+        BootstrapComponent,
         PageNotFoundComponent],
     bootstrap: [AppComponent],
     providers: [EmployeeService]

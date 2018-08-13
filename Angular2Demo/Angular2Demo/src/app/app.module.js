@@ -21,9 +21,11 @@ var simple_component_1 = require("./Other/simple.component");
 var home_component_1 = require("./home/home.component");
 var pageNotFound_component_1 = require("./Other/pageNotFound.component");
 var employee_service_1 = require("./employee/employee.service");
+var Bootstrap_componenet_1 = require("./bootstrap/Bootstrap.componenet");
 var appRoutes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'employees', component: employeeList_component_1.EmployeeListComponent },
+    { path: 'bootstrap', component: Bootstrap_componenet_1.BootstrapComponent },
     { path: 'employees/:code', component: employee_component_1.EmployeeComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: pageNotFound_component_1.PageNotFoundComponent }
@@ -41,6 +43,7 @@ var AppModule = /** @class */ (function () {
                 employeeCount_component_1.EmployeeCountComponent,
                 simple_component_1.SimpleComponent,
                 home_component_1.HomeComponent,
+                Bootstrap_componenet_1.BootstrapComponent,
                 pageNotFound_component_1.PageNotFoundComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [employee_service_1.EmployeeService]

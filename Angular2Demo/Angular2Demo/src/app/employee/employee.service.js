@@ -26,7 +26,7 @@ var EmployeeService = /** @class */ (function () {
             .catch(this.handleError);
     };
     EmployeeService.prototype.getEmployeeByCode = function (empcode) {
-        return this._http.get("http://localhost:59712/api/Employees/" + empcode)
+        return this._http.get("http://localhost:59712/api/Employee/" + empcode)
             .map(function (response) { return response.json(); })
             .toPromise()
             .catch(this.handlePromiseError);

@@ -110,6 +110,7 @@
     <Content Include="node_modules\bootstrap\js\tab.js" />
     <Content Include="node_modules\bootstrap\js\tooltip.js" />
     <Content Include="node_modules\bootstrap\js\transition.js" />
+    <Content Include="src\app\Bootstrap\Bootstrap.component.html" />
     <Content Include="src\app\employee\employee.component.css" />
     <Content Include="src\app\employee\employee.component.html" />
     <Content Include="src\app\employee\employeeCount.component.css" />
@@ -125,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <TypeScriptCompile Include="src\app\Bootstrap\Bootstrap.componenet.ts" />
     <TypeScriptCompile Include="src\app\employee\employee.service.ts" />
     <TypeScriptCompile Include="src\app\employee\Employee.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeCount.component.ts" />
