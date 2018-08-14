@@ -2,6 +2,10 @@
 import { IEmployee } from './Employee'
 import { ActivatedRoute, Router } from '@angular/router'
 import { EmployeeService } from './employee.service'
+import 'rxjs/add/operator/delay'
+import 'rxjs/add/operator/retry'
+import 'rxjs/add/operator/retryWhen'
+import 'rxjs/add/operator/scan'
 
 @Component({
     selector: 'my-employee',
@@ -12,8 +16,8 @@ export class EmployeeComponent {
     employee: IEmployee;
     statusMessage: string = "Loading data please wait";
     constructor(private _activatedRoute: ActivatedRoute,
-                private _employeeService: EmployeeService,
-                private _router: Router) {
+        private _employeeService: EmployeeService,
+        private _router: Router) {
 
     }
 
@@ -23,19 +27,30 @@ export class EmployeeComponent {
 
     ngOnInit() {
         let empCode: string = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode).then(
+        this._employeeService.getEmployeeByCode(empCode)
+            .retryWhen((err) =>  {
+                return err.scan((retryCount) => {
+                    retryCount += 1;
+                    if (retryCount < 6) {
+                        this.statusMessage = "retrying... Attempt- " + retryCount;
+                        return retryCount;
+                    } else {
+                        throw (err)
+                    }
+                }, 0).delay(3000)
+            })
+            .subscribe(
             (employeeData) => {
                 if (employeeData == null) {
                     this.statusMessage = "No employee with this id";
                 } else {
                     this.employee = employeeData;
                 }
-            }
-        ).catch((error) => {
-            this.statusMessage = "Error reaching out service, please try again after some time";
-            console.log(error);
-
-        });
+            },
+            (error) => {
+                this.statusMessage = "Error reaching out service, please try again after some time";
+                console.log(error);
+            });
     }
 
 

@@ -12,6 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var employee_service_1 = require("./employee.service");
+require("rxjs/add/operator/delay");
+require("rxjs/add/operator/retry");
+require("rxjs/add/operator/retryWhen");
+require("rxjs/add/operator/scan");
 var EmployeeComponent = /** @class */ (function () {
     function EmployeeComponent(_activatedRoute, _employeeService, _router) {
         this._activatedRoute = _activatedRoute;
@@ -25,14 +29,27 @@ var EmployeeComponent = /** @class */ (function () {
     EmployeeComponent.prototype.ngOnInit = function () {
         var _this = this;
         var empCode = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode).then(function (employeeData) {
+        this._employeeService.getEmployeeByCode(empCode)
+            .retryWhen(function (err) {
+            return err.scan(function (retryCount) {
+                retryCount += 1;
+                if (retryCount < 6) {
+                    _this.statusMessage = "retrying... Attempt- " + retryCount;
+                    return retryCount;
+                }
+                else {
+                    throw (err);
+                }
+            }, 0).delay(3000);
+        })
+            .subscribe(function (employeeData) {
             if (employeeData == null) {
                 _this.statusMessage = "No employee with this id";
             }
             else {
                 _this.employee = employeeData;
             }
-        }).catch(function (error) {
+        }, function (error) {
             _this.statusMessage = "Error reaching out service, please try again after some time";
             console.log(error);
         });

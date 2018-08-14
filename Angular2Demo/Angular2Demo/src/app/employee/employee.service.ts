@@ -14,16 +14,15 @@ export class EmployeeService {
 
     }
     getEmployees(): Observable<IEmployee[]> {
-        return this._http.get("http://localhost:59712/api/Employee/")
+        return this._http.get("http://localhost:8080/api/Employee/")
             .map((response: Response) => <IEmployee[]>response.json())
             .catch(this.handleError);
     }
 
-    getEmployeeByCode(empcode: string): Promise<void | IEmployee> {
-         return this._http.get("http://localhost:59712/api/Employee/" + empcode)
+    getEmployeeByCode(empcode: string): Observable<IEmployee> {
+         return this._http.get("http://localhost:8080/api/Employee/" + empcode)
              .map((response: Response) => <IEmployee>response.json())
-             .toPromise()
-             .catch(this.handlePromiseError);
+             .catch(this.handleError);
     }
 
     handlePromiseError(error: Response) {
